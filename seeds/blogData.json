@@ -1,0 +1,18 @@
+
+[
+    {
+        "name": "My blog about luka",
+        "description": "Luka for president",
+        "team": "Dallas Mavericks"
+    },
+    {
+        "name": "My blog about the Dallas Cowboys",
+        "description": "dak might win the mvp this year",
+        "team": "Dallas Cowboys"
+    },
+    {
+        "name": "My blog about the Dallas Stars",
+        "description": "i dont watch hockey but go stars",
+        "team": "Dallas Stars"
+    }
+]
