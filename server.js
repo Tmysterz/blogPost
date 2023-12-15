@@ -2,45 +2,36 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
-// Initializes Sequelize with session store
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
-
-const { strict } = require('assert');
 const routes = require('./controllers');
-const sequelize = require('./config/connection');
 const helpers = require('./utils/helpers');
+
+const sequelize = require('./config/connection');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Sets up session and connect to our Sequelize db
+// Set up Handlebars.js engine with custom helpers
+const hbs = exphbs.create({ helpers });
+
 const sess = {
   secret: 'Super secret secret',
-  // TODO: Add a comment describing the purpose of adding a cookies object to our options to our session object
-  // makes it to where you 
   cookie: {
-    // TODO: Add a comment describing the functionality of the maxAge attribute
-    maxAge: 60 * 60 * 1000,
-    // TODO: Add a comment describing the functionality of the httpOnly attribute
-    // 
+    maxAge: 300000,
     httpOnly: true,
-    // TODO: Add a comment describing the functionality of the secure attribute
     secure: false,
-    // TODO: Add a comment describing the functionality of the sameSite attribute
     sameSite: 'strict',
   },
   resave: false,
   saveUninitialized: true,
-  // Sets up session store
   store: new SequelizeStore({
-    db: sequelize,
-  }),
+    db: sequelize
+  })
 };
 
 app.use(session(sess));
 
-const hbs = exphbs.create({ helpers });
-
+// Inform Express.js on which template engine to use
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
@@ -51,9 +42,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () =>
-    console.log(
-      `\nServer running on port ${PORT}. Visit http://localhost:${PORT} and create an account!`
-    )
-  );
+  app.listen(PORT, () => console.log('Now listening'));
 });
