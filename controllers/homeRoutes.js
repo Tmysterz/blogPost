@@ -64,7 +64,26 @@ router.get('/profile', withAuth, async (req, res) => {
   }
 });
 
+router.get('/my-blogs/:id', async (req, res) => {
+  try {
+    const blogData = await Blog.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+        },
+      ],
+    });
 
+    const blog = blogData.get({ plain: true });
+    console.log(blog)
+    res.render('updateBlog', {
+      ...blog,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 
 router.get('/login', (req, res) => {
