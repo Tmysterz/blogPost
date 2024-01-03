@@ -31,7 +31,6 @@ async function updateButtonFunc (event){
             alert('Failed to update blog');
         }
     }
-
 }
 
 

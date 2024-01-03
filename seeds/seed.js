@@ -11,11 +11,12 @@ const seedDatabase = async () => {
     individualHooks: true,
     returning: true,
   });
-
+  
   for (const blog of blogData) {
+    console.log(blog)
     await Blog.create({
       ...blog,
-      user_id: users[Math.floor(Math.random() * users.length)].id,
+      user_id: users[Math.floor(Math.random() * users.length)].dataValues.id, 
     });
   }
 
