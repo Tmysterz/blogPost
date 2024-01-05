@@ -35,7 +35,6 @@ router.delete('/:id', withAuth, async (req, res) => {
   }
 });
 
-
 router.put('/:id', withAuth, async (req, res) => {
   try {
 
@@ -52,7 +51,7 @@ router.put('/:id', withAuth, async (req, res) => {
   }
 });
 
-router.post(`/comment`, withAuth, async (req, res) => {
+router.post(`/comment`,  async (req, res) => {
   try {
     const newComment = await Comment.create({
       ...req.body,
