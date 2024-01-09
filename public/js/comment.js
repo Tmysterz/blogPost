@@ -3,10 +3,12 @@ const newCommentHandler = async (event) => {
 
     const comment = document.querySelector("#blog-comment").value.trim();
 
-    const id = event.target.getAttribute(`dataDOWN-id`);
+    console.log(comment)
+    console.log(event.target)
+    const id = event.target.getAttribute(`data-down-id`);
 
     if (comment) {
-        const response = await fetch('/api/blogs/comments', {
+        const response = await fetch('/api/blogs/comment', {
             method: 'POST', 
             body: JSON.stringify({ comment }),
             headers: {
@@ -15,7 +17,7 @@ const newCommentHandler = async (event) => {
         });
 
         if (response.ok) {
-            document.location.replace(`/api/blogs/${id}`)
+            document.location.replace(`/blogs/${id}`)
         } else {
             alert('Failed to create comment');
         }
