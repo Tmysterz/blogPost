@@ -1,14 +1,16 @@
 <div class="text-center">
   <h2>{{name}}</h2>
   <p>{{description}}</p>
-  <p>Created by {{user.name}} on {{format_date date_created}}</p>
+  <p>Blog created by {{user.name}} on {{format_date date_created}}</p>
 </div>
 
 {{#if Comments }}
+<h3>------------------------------------------------------------------------------------------------------- </h3>
 {{#each Comments}}
 <div class="text-center">
   <p>{{comment}}</p>
-  <p>Created by {{User.name}} on {{format_date date_created}}</p>
+  <p>Comment created by {{user.name}} on {{format_date date_created}}</p>
+  <h3>------------------------------------------------------------------------------------------------------- </h3>
 </div>
 {{/each}}
 {{/if}}

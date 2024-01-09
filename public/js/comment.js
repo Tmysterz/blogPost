@@ -3,8 +3,6 @@ const newCommentHandler = async (event) => {
 
     const comment = document.querySelector("#blog-comment").value.trim();
 
-    console.log(comment)
-    console.log(event.target)
     const id = event.target.getAttribute(`data-down-id`);
 
     if (comment) {
