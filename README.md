@@ -49,10 +49,14 @@
   if you have any questions about the repo, Please feel free to open a issue or contact me directly at terrencemccarthysnkrs@gmail.com
   You can find more of my work at https://github.com/Tmysterz
 
+  ## Github link
+
+  [Github](https://github.com/Tmysterz/blogPost)
+
   ## Screenshot
 
  ![Screenshot](./images/blogPage.png)
 
  ## Deployed application
 
- [blogPage](input heroku link here)
+ [blogPage](https://serene-eyrie-53750-eea6dabed72d.herokuapp.com/)
